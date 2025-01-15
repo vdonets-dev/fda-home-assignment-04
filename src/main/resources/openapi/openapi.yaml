@@ -1,0 +1,316 @@
+openapi: 3.0.1
+info:
+  title: My OpenFDA API
+  version: 1.0.0
+  description: An API to search for drugs and store drug application data from OpenFDA.
+
+paths:
+  /api/drugs/search:
+    get:
+      tags:
+        - Drugs Fda
+      operationId: searchDrugApplications
+      summary: Search for drug applications in OpenFDA.
+      description: Retrieves drug application data from OpenFDA based on manufacturer name and optionally brand name, with pagination support.
+      parameters:
+        - name: manufacturer_name
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 100
+            example: "Pfizer"
+          description: The name of the manufacturer.
+        - name: brand_name
+          in: query
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 100
+            example: "Lipitor"
+          description: The brand name of the drug (optional).
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: The page number (zero-based) for pagination.
+        - name: size
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 99
+            default: 10
+          description: The number of results per page.
+      responses:
+        "200":
+          description: Successful retrieval of search results.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+        "400":
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/drugs:
+    get:
+      tags:
+        - Drugs Fda
+      operationId: getDrugApplications
+      summary: Get all stored drug applications.
+      description: Retrieves all drug applications stored in the system.
+      responses:
+        "200":
+          description: Successful retrieval of stored drug applications.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DrugApplicationDto"
+        "500":
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      tags:
+        - Drugs Fda
+      operationId: createDrugApplication
+      summary: Save a new drug application.
+      description: Saves a new drug application to the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DrugApplicationRequest"
+      responses:
+        "201":
+          description: Drug application created successfully.
+          content: { }
+        "400":
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            skip:
+              type: integer
+              example: 0
+            limit:
+              type: integer
+              example: 10
+            total:
+              type: integer
+              example: 100
+            total_pages:
+              type: integer
+              example: 10
+        drug_applications:
+          type: array
+          items:
+            $ref: "#/components/schemas/DrugApplicationDetails"
+
+    DrugApplicationRequest:
+      type: object
+      required:
+        - application_number
+        - manufacturer_names
+        - substance_names
+        - product_numbers
+      properties:
+        application_number:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: "^[A-Za-z0-9_-]+$" # Allows alphanumeric, hyphens, and underscores
+          example: "ANDA203300"
+          description: Unique application number. Must be alphanumeric, non-empty, and up to 100 characters.
+        manufacturer_names:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            type: string
+            minLength: 1
+          example: [ "Pfizer", "Hikma" ]
+          description: List of manufacturer names. Must contain 1-50 non-empty names, each up to 100 characters.
+        substance_names:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            type: string
+            minLength: 1
+          example: [ "Atorvastatin", "Simvastatin" ]
+          description: List of substance names. Must contain 1-50 non-empty names, each up to 100 characters.
+        product_numbers:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            pattern: "^[A-Za-z0-9]+$" # Alphanumeric only
+            minLength: 1
+          example: [ "001", "002" ]
+          description: List of product numbers. Must contain 1-50 alphanumeric values, each up to 10 characters.
+
+    DrugApplicationDto:
+      type: object
+      properties:
+        application_number:
+          type: string
+          example: "ANDA203300"
+        manufacturer_names:
+          type: array
+          items:
+            type: string
+          example: ["Pfizer", "Hikma"]
+        substance_names:
+          type: array
+          items:
+            type: string
+          example: ["Atorvastatin"]
+        product_numbers:
+          type: array
+          items:
+            type: string
+          example: ["001", "002"]
+
+    DrugApplicationDetails:
+      type: object
+      properties:
+        application_number:
+          type: string
+          example: "ANDA203300"
+        sponsor_name:
+          type: string
+          example: "Pfizer"
+        manufacturer_names:
+          type: array
+          items:
+            type: string
+          example: ["Pfizer", "Hikma"]
+        brand_names:
+          type: array
+          items:
+            type: string
+          example: ["Lipitor"]
+        substance_names:
+          type: array
+          items:
+            type: string
+          example: ["Atorvastatin"]
+        product_numbers:
+          type: array
+          items:
+            type: string
+          example: ["001", "002"]
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        submissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Submission"
+
+    Product:
+      type: object
+      properties:
+        product_number:
+          type: string
+          example: "001"
+        brand_name:
+          type: string
+          example: "Lipitor"
+        dosage_form:
+          type: string
+          example: "Tablet"
+        marketing_status:
+          type: string
+          example: "Prescription"
+        reference_drug:
+          type: string
+          example: "No"
+        reference_standard:
+          type: string
+          example: "No"
+        te_code:
+          type: string
+          example: "AP"
+        active_ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/ActiveIngredient"
+
+    Submission:
+      type: object
+      properties:
+        submission_type:
+          type: string
+          example: "ORIG"
+        submission_number:
+          type: string
+          example: "1"
+        submission_status:
+          type: string
+          example: "AP"
+        submission_status_date:
+          type: string
+          example: "20210525"
+        submission_class_code:
+          type: string
+          example: "LABELING"
+        submission_class_code_description:
+          type: string
+          example: "Labeling"
+
+    ActiveIngredient:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Atorvastatin"
+        strength:
+          type: string
+          example: "10mg"
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "VALIDATION_ERROR"
+        message:
+          type: string
+          example: "Invalid input provided."

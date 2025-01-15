@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fda.home.repository.DrugApplicationMapper">
+
+    <resultMap id="DrugApplicationResultMap" type="com.fda.home.model.DrugApplication">
+        <id property="applicationNumber" column="application_number"/>
+
+        <collection property="manufacturerNames" ofType="java.lang.String" javaType="java.util.List">
+            <result column="manufacturer_name"/>
+        </collection>
+
+        <collection property="substanceNames" ofType="java.lang.String" javaType="java.util.List">
+            <result column="substance_name"/>
+        </collection>
+
+        <collection property="productNumbers" ofType="java.lang.String" javaType="java.util.List">
+            <result column="product_number"/>
+        </collection>
+    </resultMap>
+
+    <insert id="insertDrugApplicationWithDetails">
+        INSERT INTO drug_application (application_number)
+        VALUES (#{applicationNumber});
+
+        <foreach collection="manufacturerNames" item="name" separator=";">
+            INSERT INTO drug_application_manufacturer (application_number, manufacturer_name)
+            VALUES (#{applicationNumber}, #{name});
+        </foreach>
+
+        <foreach collection="substanceNames" item="name" separator=";">
+            INSERT INTO drug_application_substance (application_number, substance_name)
+            VALUES (#{applicationNumber}, #{name});
+        </foreach>
+
+        <foreach collection="productNumbers" item="productNumber" separator=";">
+            INSERT INTO drug_application_product (application_number, product_number)
+            VALUES (#{applicationNumber}, #{productNumber});
+        </foreach>
+    </insert>
+
+    <select id="getAllDrugApplications" resultMap="DrugApplicationResultMap">
+        SELECT da.application_number,
+               dam.manufacturer_name,
+               das.substance_name,
+               dap.product_number
+        FROM drug_application da
+                 LEFT JOIN drug_application_manufacturer dam ON da.application_number = dam.application_number
+                 LEFT JOIN drug_application_substance das ON da.application_number = das.application_number
+                 LEFT JOIN drug_application_product dap ON da.application_number = dap.application_number;
+    </select>
+
+    <select id="getDrugApplicationById" parameterType="string" resultMap="DrugApplicationResultMap">
+        SELECT da.application_number,
+               dam.manufacturer_name,
+               das.substance_name,
+               dap.product_number
+        FROM drug_application da
+                 LEFT JOIN drug_application_manufacturer dam ON da.application_number = dam.application_number
+                 LEFT JOIN drug_application_substance das ON da.application_number = das.application_number
+                 LEFT JOIN drug_application_product dap ON da.application_number = dap.application_number
+        WHERE da.application_number = #{applicationNumber};
+    </select>
+</mapper>

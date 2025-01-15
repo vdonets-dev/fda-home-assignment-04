@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:${PGPORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: fda-home-assignment
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    clean-disabled: false
+    placeholders:
+      schema_name: ${DB_SCHEMA:public}
+    default-schema: ${DB_SCHEMA:public}
+    schemas: ${DB_SCHEMA:public}
+
+mybatis:
+  mapper-locations: classpath*:mappers/*.xml
+
+openfda:
+  api:
+    base-url: https://api.fda.gov/drug/drugsfda.json
+    connect-timeout: ${OPEN_FDA_CONNECT_TIMEOUT:5000}
+    read-timeout: ${OPEN_FDA_READ_TIMEOUT:10000}
+    retry:
+      max-attempts: ${OPEN_FDA_RETRY_MAX_ATTEMPTS:3}
+      backoff-interval: ${OPEN_FDA_RETRY_BACKOFF_INTERVAL:1000}
+    circuit-breaker:
+      name: ${OPEN_FDA_CIRCUIT_BREAKER_NAME:openfdaCircuitBreaker}
+
+caching:
+  caches:
+    openFdaCache:
+      expire-after-write-seconds: ${CACHE_EXPIRE_AFTER_WRITE_SECONDS:600}
+      initial-capacity: ${CACHE_INITIAL_CAPACITY:50}
+      maximum-size: ${CACHE_MAXIMUM_SIZE:500}
+
+logging:
+  level:
+    com.example.openfda: DEBUG
