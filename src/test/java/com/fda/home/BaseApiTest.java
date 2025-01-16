@@ -13,11 +13,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-@SpringBootTest(classes = {FdaHomeAssignmentApplication.class},
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = {
-                "openfda.api.base-url=http://localhost:${wiremock.server.port}"
-        })
+@SpringBootTest(classes = {FdaHomeAssignmentApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWireMock(port = 0)
 public abstract class BaseApiTest {
     @Container
@@ -50,6 +46,3 @@ public abstract class BaseApiTest {
         WireMock.resetAllScenarios();
     }
 }
-
-
-

@@ -1,7 +1,7 @@
 FROM gradle:8.1.1-jdk17-jammy AS build
 WORKDIR /app
 
-COPY build.gradle settings.gradle gradle.properties /app/
+COPY build.gradle settings.gradle /app/
 RUN gradle dependencies --no-daemon
 
 COPY . /app

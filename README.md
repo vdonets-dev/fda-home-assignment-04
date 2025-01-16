@@ -39,19 +39,21 @@ The OpenFDA API Application allows users to search for drug applications using t
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone https://github.com/vdonets-dev/fda-home-assignment-04
+   cd fda-home-assignment-04
    
 2. **Set Up Environment Variables:**
 
 Create a .env file in the root directory with the following content:
 ```
-POSTGRES_USER=openfda_user
-POSTGRES_PASSWORD=openfda_pass
-POSTGRES_DB=openfda_db
-PGPORT=5432
-POSTGRES_VOLUME=postgres_data  
 OPENFDA_APP_PORT=8080
+POSTGRES_DB=openfda_db
+POSTGRES_HOST=localhost for native run or db for docker
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+OPENFDA_APP_PORT=8080
+PGPORT=5432
+POSTGRES_VOLUME=./data/postgres
 ```
 
 3. **Start Services:**
@@ -111,13 +113,3 @@ Run Tests:
 |-----------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | Retry           | `application.yml`       | ```yaml openfda: api: retry: max-attempts: 3 backoff-interval: 1000 ```                                                     |
 | Circuit Breaker | `application.yml`       | ```yaml openfda: api: circuit-breaker: name: openfdaCircuitBreaker ```                                                          |
-
-
-## Directory Structure  (Informative, not suitable for a table)
-
-Refer to the README for a detailed directory structure.  It provides context and descriptions for each folder and file.
-
-
-## Troubleshooting (Informative, not suitable for a table)
-
-Refer to the README for troubleshooting common issues. It provides solutions for problems like database connection failures, caching issues, and API unresponsiveness.

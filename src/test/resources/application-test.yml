@@ -1,0 +1,12 @@
+openfda:
+  api:
+    base-url: http://localhost:${wiremock.server.port}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode:
+      platform: postgres

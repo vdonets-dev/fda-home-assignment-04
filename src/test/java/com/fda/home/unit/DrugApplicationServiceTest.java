@@ -1,7 +1,8 @@
 package com.fda.home.unit;
 
 import com.fda.home.client.OpenFdaClient;
-import com.fda.home.converter.Converter;
+import com.fda.home.converter.DrugApplicationConverter;
+import com.fda.home.converter.SearchResponseConverter;
 import com.fda.home.model.DrugApplication;
 import com.fda.home.model.dto.OpenFdaSearchResponse;
 import com.fda.home.repository.DrugApplicationMapper;
@@ -36,10 +37,10 @@ class DrugApplicationServiceTest {
     private DrugApplicationMapper repository;
 
     @Mock
-    private Converter<OpenFdaSearchResponse, SearchResponse> searchResponseConverter;
+    private SearchResponseConverter searchResponseConverter;
 
     @Mock
-    private Converter<DrugApplication, DrugApplicationDto> drugApplicationConverter;
+    private DrugApplicationConverter drugApplicationConverter;
 
     @BeforeEach
     void setUp() {
@@ -133,7 +134,7 @@ class DrugApplicationServiceTest {
 
         // Then
         verify(repository).getAllDrugApplications();
-        verify(drugApplicationConverter, never()).convertMultiple(eq(List.of()), any());
+        verify(drugApplicationConverter, times(1)).convertMultiple(eq(List.of()), any());
         assertThat(actualDtos).isEmpty();
     }
 

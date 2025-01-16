@@ -87,7 +87,7 @@ dependencies {
     implementation 'net.javacrumbs.json-unit:json-unit:2.34.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.14.2'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 

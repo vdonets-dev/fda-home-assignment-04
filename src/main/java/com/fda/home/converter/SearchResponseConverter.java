@@ -6,16 +6,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
 @Component
 public class SearchResponseConverter extends BiConverter<OpenFdaSearchResponse, SearchResponse> {
 
     @Override
     protected SearchResponse doConvert(OpenFdaSearchResponse input) {
         return new SearchResponse()
-                .meta(Optional.ofNullable(input)
-                        .map(OpenFdaSearchResponse::getMeta)
-                        .map(this::mapMeta)
-                        .orElse(null))
+                .meta(mapMeta(input))
                 .drugApplications(Optional.ofNullable(input)
                         .map(OpenFdaSearchResponse::getResults)
                         .stream()
@@ -24,14 +22,16 @@ public class SearchResponseConverter extends BiConverter<OpenFdaSearchResponse, 
                         .toList());
     }
 
-    private SearchResponseMeta mapMeta(OpenFdaSearchResponse.Meta meta) {
-        return Optional.ofNullable(meta)
-                .map(m -> {
-                    int totalPages = (int) Math.ceil((double) m.getResults().getTotal() / m.getResults().getLimit());
+    private SearchResponseMeta mapMeta(OpenFdaSearchResponse input) {
+        return Optional.ofNullable(input)
+                .map(OpenFdaSearchResponse::getMeta)
+                .map(OpenFdaSearchResponse.Meta::getResults)
+                .map(results -> {
+                    int totalPages = (int) Math.ceil((double) results.getTotal() / results.getLimit());
                     return new SearchResponseMeta()
-                            .skip(m.getResults().getSkip())
-                            .limit(m.getResults().getLimit())
-                            .total(m.getResults().getTotal())
+                            .skip(results.getSkip())
+                            .limit(results.getLimit())
+                            .total(results.getTotal())
                             .totalPages(totalPages);
                 })
                 .orElse(null);

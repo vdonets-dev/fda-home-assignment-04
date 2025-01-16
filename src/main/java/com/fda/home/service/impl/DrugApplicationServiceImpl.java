@@ -1,9 +1,8 @@
 package com.fda.home.service.impl;
 
 import com.fda.home.client.OpenFdaClient;
-import com.fda.home.converter.Converter;
-import com.fda.home.model.DrugApplication;
-import com.fda.home.model.dto.OpenFdaSearchResponse;
+import com.fda.home.converter.DrugApplicationConverter;
+import com.fda.home.converter.SearchResponseConverter;
 import com.fda.home.repository.DrugApplicationMapper;
 import com.fda.home.service.DrugApplicationService;
 import com.openfda.generated.models.DrugApplicationDto;
@@ -24,8 +23,8 @@ public class DrugApplicationServiceImpl implements DrugApplicationService {
 
     private final OpenFdaClient openFdaClient;
     private final DrugApplicationMapper repository;
-    private final Converter<OpenFdaSearchResponse, SearchResponse> searchResponseConverter;
-    private final Converter<DrugApplication, DrugApplicationDto> drugApplicationConverter;
+    private final SearchResponseConverter searchResponseConverter;
+    private final DrugApplicationConverter drugApplicationConverter;
 
     @Override
     public SearchResponse searchDrugApplications(String manufacturerName, String brandName, int page, int size) {

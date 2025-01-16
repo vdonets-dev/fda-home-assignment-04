@@ -10,11 +10,17 @@ spring:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
-    clean-disabled: false
+    clean-disabled: true
     placeholders:
       schema_name: ${DB_SCHEMA:public}
     default-schema: ${DB_SCHEMA:public}
     schemas: ${DB_SCHEMA:public}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
 
 mybatis:
   mapper-locations: classpath*:mappers/*.xml
@@ -22,8 +28,8 @@ mybatis:
 openfda:
   api:
     base-url: https://api.fda.gov
-    connect-timeout: ${OPEN_FDA_CONNECT_TIMEOUT:5000}
-    read-timeout: ${OPEN_FDA_READ_TIMEOUT:10000}
+    connect-timeout: ${OPEN_FDA_CONNECT_TIMEOUT:3000}
+    read-timeout: ${OPEN_FDA_READ_TIMEOUT:5000}
     retry:
       max-attempts: ${OPEN_FDA_RETRY_MAX_ATTEMPTS:3}
       backoff-interval: ${OPEN_FDA_RETRY_BACKOFF_INTERVAL:1000}
@@ -33,10 +39,11 @@ openfda:
 caching:
   caches:
     openFdaCache:
-      expire-after-write-seconds: ${CACHE_EXPIRE_AFTER_WRITE_SECONDS:600}
-      initial-capacity: ${CACHE_INITIAL_CAPACITY:50}
-      maximum-size: ${CACHE_MAXIMUM_SIZE:500}
+      expire-after-write-seconds: ${CACHE_EXPIRE_AFTER_WRITE_SECONDS:3600}
+      initial-capacity: ${CACHE_INITIAL_CAPACITY:100}
+      maximum-size: ${CACHE_MAXIMUM_SIZE:1000}
 
 logging:
   level:
-    com.fda.home: ${LOG_LEVEL:DEBUG}
+    root: WARN
+    com.fda.home: ${LOG_LEVEL:INFO}

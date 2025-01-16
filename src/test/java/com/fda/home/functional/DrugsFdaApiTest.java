@@ -12,8 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Map;
 import java.util.stream.Stream;
@@ -21,8 +20,7 @@ import java.util.stream.Stream;
 import static com.fda.home.util.TestUtils.matchesJson;
 import static io.restassured.RestAssured.given;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Testcontainers
+@ActiveProfiles("test")
 class DrugsFdaApiTest extends BaseApiTest {
 
     private static final String SEARCH_RESPONSE_PATH = "/api/responses/search-api-response.json";
