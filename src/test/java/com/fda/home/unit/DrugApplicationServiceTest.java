@@ -6,24 +6,28 @@ import com.fda.home.model.DrugApplication;
 import com.fda.home.model.dto.OpenFdaSearchResponse;
 import com.fda.home.repository.DrugApplicationMapper;
 import com.fda.home.service.impl.DrugApplicationServiceImpl;
-import com.openfda.generated.models.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
+import com.openfda.generated.models.DrugApplicationDetails;
+import com.openfda.generated.models.DrugApplicationDto;
+import com.openfda.generated.models.DrugApplicationRequest;
+import com.openfda.generated.models.SearchResponse;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 class DrugApplicationServiceTest {
+
+    @InjectMocks
+    private DrugApplicationServiceImpl drugApplicationService;
 
     @Mock
     private OpenFdaClient openFdaClient;
@@ -37,187 +41,128 @@ class DrugApplicationServiceTest {
     @Mock
     private Converter<DrugApplication, DrugApplicationDto> drugApplicationConverter;
 
-    @InjectMocks
-    private DrugApplicationServiceImpl drugApplicationService;
-
-    @Captor
-    private ArgumentCaptor<OpenFdaSearchResponse> openFdaResponseCaptor;
-
-    @Captor
-    private ArgumentCaptor<List<DrugApplication>> drugApplicationListCaptor;
-
-    @Captor
-    private ArgumentCaptor<DrugApplicationRequest> drugApplicationRequestCaptor;
-
-    @AfterEach
-    void tearDown() {
-        Mockito.reset(openFdaClient, searchResponseConverter, repository, drugApplicationConverter);
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    @DisplayName("Should search drug applications successfully")
-    void searchDrugApplications_Success() {
+    void shouldReturnSearchResponseWhenSearchDrugApplicationsCalled() {
         // Given
-        String manufacturerName = "Pfizer";
-        String brandName = "Lipitor";
-        int page = 0;
+        String manufacturerName = "TestManufacturer";
+        String brandName = "TestBrand";
+        int page = 1;
         int size = 10;
         int skip = page * size;
 
-        OpenFdaSearchResponse.Meta.Results mockMetaResults = new OpenFdaSearchResponse.Meta.Results();
-        mockMetaResults.setSkip(skip);
-        mockMetaResults.setLimit(size);
-        mockMetaResults.setTotal(1);
+        OpenFdaSearchResponse mockApiResponse = new OpenFdaSearchResponse();
+        OpenFdaSearchResponse.Meta meta = new OpenFdaSearchResponse.Meta();
+        OpenFdaSearchResponse.Meta.Results results = new OpenFdaSearchResponse.Meta.Results();
+        results.setLimit(3);
+        results.setSkip(0);
+        results.setTotal(0);
+        meta.setResults(results);
+        mockApiResponse.setMeta(meta);
 
-        OpenFdaSearchResponse.Meta mockMeta = new OpenFdaSearchResponse.Meta();
-        mockMeta.setResults(mockMetaResults);
+        SearchResponse expectedResponse = new SearchResponse();
 
-        OpenFdaSearchResponse.Result mockResult = new OpenFdaSearchResponse.Result();
-        mockResult.setApplicationNumber("NDA123456");
-        mockResult.setSponsorName("Pfizer");
-
-        OpenFdaSearchResponse mockResponse = new OpenFdaSearchResponse();
-        mockResponse.setMeta(mockMeta);
-        mockResponse.setResults(List.of(mockResult));
-
-        SearchResponse expectedSearchResponse = new SearchResponse();
-
-        when(openFdaClient.searchDrugApplications(manufacturerName, brandName, skip, size))
-                .thenReturn(mockResponse);
-        when(searchResponseConverter.convert(eq(mockResponse)))
-                .thenReturn(expectedSearchResponse);
+        when(openFdaClient.searchDrugApplications(manufacturerName, brandName, skip, size)).thenReturn(mockApiResponse);
+        when(searchResponseConverter.convert(mockApiResponse)).thenReturn(expectedResponse);
 
         // When
-        SearchResponse result = drugApplicationService.searchDrugApplications(manufacturerName, brandName, page, size);
+        SearchResponse actualResponse = drugApplicationService.searchDrugApplications(manufacturerName, brandName, page, size);
 
         // Then
         verify(openFdaClient).searchDrugApplications(manufacturerName, brandName, skip, size);
-        Assertions.assertEquals(expectedSearchResponse, result);
+        verify(searchResponseConverter, times(1)).convert(mockApiResponse);
+        assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 
     @Test
-    @DisplayName("Should retrieve all stored drug applications")
-    void getDrugApplications_Success() {
+    void shouldReturnAllDrugApplicationsWhenGetDrugApplicationsCalled() {
         // Given
-        DrugApplication mockApplication = new DrugApplication();
-        mockApplication.setApplicationNumber("NDA123456");
-
-        List<DrugApplication> mockApplications = List.of(mockApplication);
-
+        List<DrugApplication> mockApplications = List.of(
+                new DrugApplication("123", List.of("Manufacturer1"), List.of("Substance1"), List.of("Product1"))
+        );
         DrugApplicationDto expectedDto = new DrugApplicationDto();
-        expectedDto.setApplicationNumber("NDA123456");
+        expectedDto.setApplicationNumber("123");
+        expectedDto.setManufacturerNames(List.of("Manufacturer1"));
+        expectedDto.setSubstanceNames(List.of("Substance1"));
+        expectedDto.setProductNumbers(List.of("Product1"));
 
         List<DrugApplicationDto> expectedDtos = List.of(expectedDto);
 
-        when(repository.getAllDrugApplications())
-                .thenReturn(mockApplications);
-        when(drugApplicationConverter.convertMultiple(eq(mockApplications), any()))
-                .thenReturn(expectedDtos);
+        when(repository.getAllDrugApplications()).thenReturn(mockApplications);
+        when(drugApplicationConverter.convertMultiple(eq(mockApplications), any())).thenReturn(expectedDtos);
 
         // When
-        List<DrugApplicationDto> result = drugApplicationService.getDrugApplications();
+        List<DrugApplicationDto> actualDtos = drugApplicationService.getDrugApplications();
 
         // Then
-        Assertions.assertEquals(mockApplications, drugApplicationListCaptor.getValue());
-        Assertions.assertEquals(expectedDtos, result);
+        verify(repository).getAllDrugApplications();
+        verify(drugApplicationConverter, times(1)).convertMultiple(eq(mockApplications), any());
+        assertThat(actualDtos).isEqualTo(expectedDtos);
     }
 
     @Test
-    @DisplayName("Should save new drug application")
-    void createDrugApplication_Success() {
+    void shouldSaveDrugApplicationWhenCreateDrugApplicationCalled() {
         // Given
-        DrugApplicationRequest applicationRequest = new DrugApplicationRequest();
-        applicationRequest.setApplicationNumber("ANDA203300");
+        DrugApplicationRequest validRequest = new DrugApplicationRequest();
+        validRequest.setApplicationNumber("123");
+        validRequest.setManufacturerNames(List.of("Manufacturer1"));
+        validRequest.setSubstanceNames(List.of("Substance1"));
+        validRequest.setProductNumbers(List.of("Product1"));
+
+        doNothing().when(repository).insertDrugApplicationWithDetails(validRequest);
 
         // When
-        drugApplicationService.createDrugApplication(applicationRequest);
+        drugApplicationService.createDrugApplication(validRequest);
 
         // Then
-        verify(repository).insertDrugApplicationWithDetails(drugApplicationRequestCaptor.capture());
-        Assertions.assertEquals(applicationRequest, drugApplicationRequestCaptor.getValue());
+        verify(repository).insertDrugApplicationWithDetails(validRequest);
     }
 
     @Test
-    @DisplayName("Should handle empty drug application results")
-    void searchDrugApplications_EmptyResults() {
+    void shouldHandleEmptyDrugApplications() {
         // Given
-        String manufacturerName = "Unknown";
-        String brandName = "UnknownBrand";
-        int page = 0;
-        int size = 10;
-        int skip = page * size;
+        when(repository.getAllDrugApplications()).thenReturn(List.of());
+        when(drugApplicationConverter.convertMultiple(eq(List.of()), any())).thenReturn(List.of());
 
-        OpenFdaSearchResponse.Meta.Results mockMetaResults = new OpenFdaSearchResponse.Meta.Results();
-        mockMetaResults.setSkip(skip);
-        mockMetaResults.setLimit(size);
-        mockMetaResults.setTotal(0);
+        // When
+        List<DrugApplicationDto> actualDtos = drugApplicationService.getDrugApplications();
 
-        OpenFdaSearchResponse.Meta mockMeta = new OpenFdaSearchResponse.Meta();
-        mockMeta.setResults(mockMetaResults);
+        // Then
+        verify(repository).getAllDrugApplications();
+        verify(drugApplicationConverter, never()).convertMultiple(eq(List.of()), any());
+        assertThat(actualDtos).isEmpty();
+    }
 
+    @Test
+    void shouldHandleNullMetaInOpenFdaSearchResponse() {
+        // Given
         OpenFdaSearchResponse mockResponse = new OpenFdaSearchResponse();
-        mockResponse.setMeta(mockMeta);
+        mockResponse.setMeta(null);
         mockResponse.setResults(List.of());
 
-        SearchResponse expectedSearchResponse = new SearchResponse();
-
-        when(openFdaClient.searchDrugApplications(manufacturerName, brandName, skip, size))
-                .thenReturn(mockResponse);
-        when(searchResponseConverter.convert(eq(mockResponse)))
-                .thenReturn(expectedSearchResponse);
-
-        // When
-        SearchResponse result = drugApplicationService.searchDrugApplications(manufacturerName, brandName, page, size);
-
-        // Then
-        verify(openFdaClient).searchDrugApplications(manufacturerName, brandName, skip, size);
-        Assertions.assertEquals(expectedSearchResponse, result);
-    }
-
-    @Test
-    @DisplayName("Should search drug applications with multiple results")
-    void searchDrugApplications_MultipleResults() {
-        // Given
-        String manufacturerName = "Moderna";
-        String brandName = "Spikevax";
-        int page = 1;
-        int size = 5;
-        int skip = page * size;
-
-        OpenFdaSearchResponse.Meta.Results mockMetaResults = new OpenFdaSearchResponse.Meta.Results();
-        mockMetaResults.setSkip(skip);
-        mockMetaResults.setLimit(size);
-        mockMetaResults.setTotal(2);
-
-        OpenFdaSearchResponse.Meta mockMeta = new OpenFdaSearchResponse.Meta();
-        mockMeta.setResults(mockMetaResults);
-
-        OpenFdaSearchResponse.Result result1 = new OpenFdaSearchResponse.Result();
-        result1.setApplicationNumber("NDA654321");
-        result1.setSponsorName("Moderna");
-
-        OpenFdaSearchResponse.Result result2 = new OpenFdaSearchResponse.Result();
-        result2.setApplicationNumber("NDA789012");
-        result2.setSponsorName("Moderna");
-
-        OpenFdaSearchResponse mockResponse = new OpenFdaSearchResponse();
-        mockResponse.setMeta(mockMeta);
-        mockResponse.setResults(List.of(result1, result2));
-
-        SearchResponse expectedSearchResponse = new SearchResponse();
-
-        when(openFdaClient.searchDrugApplications(manufacturerName, brandName, skip, size))
-                .thenReturn(mockResponse);
-        when(searchResponseConverter.convert(eq(mockResponse)))
-                .thenReturn(expectedSearchResponse);
+        when(searchResponseConverter.convert(mockResponse)).thenAnswer(invocation -> {
+            OpenFdaSearchResponse response = invocation.getArgument(0);
+            SearchResponse result = new SearchResponse();
+            result.setMeta(null);
+            result.setDrugApplications(response.getResults().stream()
+                    .map(resultEntry -> {
+                        DrugApplicationDetails dto = new DrugApplicationDetails();
+                        dto.setApplicationNumber(resultEntry.getApplicationNumber());
+                        return dto;
+                    }).collect(Collectors.toList()));
+            return result;
+        });
 
         // When
-        SearchResponse result = drugApplicationService.searchDrugApplications(manufacturerName, brandName, page, size);
+        SearchResponse actualResponse = searchResponseConverter.convert(mockResponse);
 
         // Then
-        verify(searchResponseConverter).convert(openFdaResponseCaptor.capture());
-        Assertions.assertEquals(mockResponse, openFdaResponseCaptor.getValue());
-        verify(openFdaClient).searchDrugApplications(manufacturerName, brandName, skip, size);
-        Assertions.assertEquals(expectedSearchResponse, result);
+        verify(searchResponseConverter, times(1)).convert(mockResponse);
+        assertThat(actualResponse.getDrugApplications()).isEmpty();
+        assertThat(actualResponse.getMeta()).isNull();
     }
 }

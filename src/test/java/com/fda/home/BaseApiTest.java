@@ -13,10 +13,13 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-@SpringBootTest(classes = {FdaHomeAssignmentApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {FdaHomeAssignmentApplication.class},
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = {
+                "openfda.api.base-url=http://localhost:${wiremock.server.port}"
+        })
 @AutoConfigureWireMock(port = 0)
 public abstract class BaseApiTest {
-
     @Container
     private static final PostgreSQLContainer<?> POSTGRES_CONTAINER =
             new PostgreSQLContainer<>("postgres:15.2")

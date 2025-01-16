@@ -17,6 +17,8 @@ services:
   flyway:
     image: flyway/flyway:latest
     restart: no
+    env_file:
+      - .env
     environment:
       - FLYWAY_USER=${POSTGRES_USER}
       - FLYWAY_PASSWORD=${POSTGRES_PASSWORD}

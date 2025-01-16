@@ -27,6 +27,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -41,6 +42,7 @@ dependencies {
     implementation 'org.springframework.retry:spring-retry:2.0.11'
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+    implementation 'org.springframework.cloud:spring-cloud-contract-wiremock:4.2.0'
 
     // Spring Data
     implementation 'org.springframework.data:spring-data-commons:3.0.5'
@@ -79,7 +81,14 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.26.3'
     testImplementation 'io.rest-assured:rest-assured:5.3.0'
     testImplementation 'com.jayway.jsonpath:json-path:2.8.0'
-    implementation 'org.springframework.cloud:spring-cloud-contract-wiremock:4.2.0'
+
+    // Utils
+    implementation 'commons-io:commons-io:2.14.0'
+    implementation 'net.javacrumbs.json-unit:json-unit:2.34.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.2'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
 openApiGenerate {

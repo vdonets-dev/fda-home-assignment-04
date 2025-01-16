@@ -18,7 +18,7 @@ public class OpenFdaUrlBuilder {
             searchQuery += String.format(" %s %s:\"%s\"", OpenFdaApiConstants.AND_OPERATOR, OpenFdaApiConstants.BRAND_NAME_FIELD, brandName);
         }
 
-        return UriComponentsBuilder.fromHttpUrl(baseUrl)
+        return UriComponentsBuilder.fromHttpUrl(baseUrl + "/drug/drugsfda.json")
                 .queryParam(OpenFdaApiConstants.SEARCH_PARAM, searchQuery)
                 .queryParam(OpenFdaApiConstants.LIMIT_PARAM, limit)
                 .queryParam(OpenFdaApiConstants.SKIP_PARAM, skip)

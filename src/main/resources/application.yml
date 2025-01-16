@@ -21,7 +21,7 @@ mybatis:
 
 openfda:
   api:
-    base-url: https://api.fda.gov/drug/drugsfda.json
+    base-url: https://api.fda.gov
     connect-timeout: ${OPEN_FDA_CONNECT_TIMEOUT:5000}
     read-timeout: ${OPEN_FDA_READ_TIMEOUT:10000}
     retry:

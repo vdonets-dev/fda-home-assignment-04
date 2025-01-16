@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-
 @Component
 public class SearchResponseConverter extends BiConverter<OpenFdaSearchResponse, SearchResponse> {
 
@@ -26,70 +25,82 @@ public class SearchResponseConverter extends BiConverter<OpenFdaSearchResponse, 
     }
 
     private SearchResponseMeta mapMeta(OpenFdaSearchResponse.Meta meta) {
-        int totalPages = (int) Math.ceil((double) meta.getResults().getTotal() / meta.getResults().getLimit());
-        return new SearchResponseMeta()
-                .skip(meta.getResults().getSkip())
-                .limit(meta.getResults().getLimit())
-                .total(meta.getResults().getTotal())
-                .totalPages(totalPages);
+        return Optional.ofNullable(meta)
+                .map(m -> {
+                    int totalPages = (int) Math.ceil((double) m.getResults().getTotal() / m.getResults().getLimit());
+                    return new SearchResponseMeta()
+                            .skip(m.getResults().getSkip())
+                            .limit(m.getResults().getLimit())
+                            .total(m.getResults().getTotal())
+                            .totalPages(totalPages);
+                })
+                .orElse(null);
     }
 
     private DrugApplicationDetails mapToDrugApplication(OpenFdaSearchResponse.Result result) {
-        OpenFdaSearchResponse.Result.OpenFda openFda = result.getOpenfda();
-        return new DrugApplicationDetails()
-                .applicationNumber(result.getApplicationNumber())
-                .sponsorName(result.getSponsorName())
-                .manufacturerNames(Optional.ofNullable(openFda)
-                        .map(OpenFdaSearchResponse.Result.OpenFda::getManufacturerName)
-                        .orElse(List.of()))
-                .brandNames(Optional.ofNullable(openFda)
-                        .map(OpenFdaSearchResponse.Result.OpenFda::getBrandName)
-                        .orElse(List.of()))
-                .substanceNames(Optional.ofNullable(openFda)
-                        .map(OpenFdaSearchResponse.Result.OpenFda::getSubstanceName)
-                        .orElse(List.of()))
-                .productNumbers(Optional.ofNullable(result.getProducts())
-                        .stream()
-                        .flatMap(List::stream)
-                        .map(OpenFdaSearchResponse.Result.Product::getProductNumber)
-                        .toList())
-                .products(Optional.ofNullable(result.getProducts())
-                        .stream()
-                        .flatMap(List::stream)
-                        .map(this::mapToProduct)
-                        .toList())
-                .submissions(Optional.ofNullable(result.getSubmissions())
-                        .stream()
-                        .flatMap(List::stream)
-                        .map(this::mapToSubmission)
-                        .toList());
+        return Optional.ofNullable(result)
+                .map(r -> {
+                    OpenFdaSearchResponse.Result.OpenFda openFda = r.getOpenfda();
+                    return new DrugApplicationDetails()
+                            .applicationNumber(r.getApplicationNumber())
+                            .sponsorName(r.getSponsorName())
+                            .manufacturerNames(Optional.ofNullable(openFda)
+                                    .map(OpenFdaSearchResponse.Result.OpenFda::getManufacturerName)
+                                    .orElse(List.of()))
+                            .brandNames(Optional.ofNullable(openFda)
+                                    .map(OpenFdaSearchResponse.Result.OpenFda::getBrandName)
+                                    .orElse(List.of()))
+                            .substanceNames(Optional.ofNullable(openFda)
+                                    .map(OpenFdaSearchResponse.Result.OpenFda::getSubstanceName)
+                                    .orElse(List.of()))
+                            .productNumbers(Optional.ofNullable(r.getProducts())
+                                    .stream()
+                                    .flatMap(List::stream)
+                                    .map(OpenFdaSearchResponse.Result.Product::getProductNumber)
+                                    .toList())
+                            .products(Optional.ofNullable(r.getProducts())
+                                    .stream()
+                                    .flatMap(List::stream)
+                                    .map(this::mapToProduct)
+                                    .toList())
+                            .submissions(Optional.ofNullable(r.getSubmissions())
+                                    .stream()
+                                    .flatMap(List::stream)
+                                    .map(this::mapToSubmission)
+                                    .toList());
+                })
+                .orElse(null);
     }
 
     private Product mapToProduct(OpenFdaSearchResponse.Result.Product product) {
-        return new Product()
-                .productNumber(product.getProductNumber())
-                .brandName(product.getBrandName())
-                .dosageForm(product.getDosageForm())
-                .marketingStatus(product.getMarketingStatus())
-                .referenceDrug(product.getReferenceDrug())
-                .referenceStandard(product.getReferenceStandard())
-                .teCode(product.getTeCode())
-                .activeIngredients(Optional.ofNullable(product.getActiveIngredients())
-                        .stream()
-                        .flatMap(List::stream)
-                        .map(ai -> new ActiveIngredient()
-                                .name(ai.getName())
-                                .strength(ai.getStrength()))
-                        .toList());
+        return Optional.ofNullable(product)
+                .map(p -> new Product()
+                        .productNumber(p.getProductNumber())
+                        .brandName(p.getBrandName())
+                        .dosageForm(p.getDosageForm())
+                        .marketingStatus(p.getMarketingStatus())
+                        .referenceDrug(p.getReferenceDrug())
+                        .referenceStandard(p.getReferenceStandard())
+                        .teCode(p.getTeCode())
+                        .activeIngredients(Optional.ofNullable(p.getActiveIngredients())
+                                .stream()
+                                .flatMap(List::stream)
+                                .map(ai -> new ActiveIngredient()
+                                        .name(ai.getName())
+                                        .strength(ai.getStrength()))
+                                .toList()))
+                .orElse(null);
     }
 
     private Submission mapToSubmission(OpenFdaSearchResponse.Result.Submission submission) {
-        return new Submission()
-                .submissionType(submission.getSubmissionType())
-                .submissionNumber(submission.getSubmissionNumber())
-                .submissionStatus(submission.getSubmissionStatus())
-                .submissionStatusDate(submission.getSubmissionStatusDate())
-                .submissionClassCode(submission.getSubmissionClassCode())
-                .submissionClassCodeDescription(submission.getSubmissionClassCodeDescription());
+        return Optional.ofNullable(submission)
+                .map(s -> new Submission()
+                        .submissionType(s.getSubmissionType())
+                        .submissionNumber(s.getSubmissionNumber())
+                        .submissionStatus(s.getSubmissionStatus())
+                        .submissionStatusDate(s.getSubmissionStatusDate())
+                        .submissionClassCode(s.getSubmissionClassCode())
+                        .submissionClassCodeDescription(s.getSubmissionClassCodeDescription()))
+                .orElse(null);
     }
 }
