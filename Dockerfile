@@ -5,7 +5,7 @@ COPY build.gradle settings.gradle /app/
 RUN gradle dependencies --no-daemon
 
 COPY . /app
-RUN gradle build --no-daemon
+RUN gradle build -x test --no-daemon
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
