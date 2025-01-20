@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.List;
+
 
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
     @ExceptionHandler({OpenFdaNotFoundException.class, OpenFdaApiException.class})
     public ResponseEntity<ErrorResponse> handleOpenFdaErrors(RuntimeException ex) {
         ErrorResponse error = new ErrorResponse();
@@ -35,45 +38,63 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleInvalidRequestBody(HttpMessageNotReadableException ex) {
-        return createErrorResponse("BAD_REQUEST", "Invalid request format or missing fields");
+        return createErrorResponse(
+                "BAD_REQUEST",
+                "Invalid request format or missing fields",
+                List.of("Request body is malformed or contains invalid data.")
+        );
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidationExceptions(MethodArgumentNotValidException ex) {
-        String errorMessage = ex.getBindingResult().getFieldErrors().stream().map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage()).findFirst().orElse("Validation failed");
+        List<String> details = ex.getBindingResult().getFieldErrors().stream()
+                .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                .toList();
 
-        return createErrorResponse(ErrorCodes.BAD_REQUEST.name(), errorMessage);
+        return createErrorResponse(ErrorCodes.VALIDATION_ERROR.name(), "Validation failed.", details);
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
-        return createErrorResponse(ErrorCodes.MISSING_PARAMETER.name(), ex.getMessage());
+        List<String> details = List.of("Parameter '" + ex.getParameterName() + "' is missing.");
+
+        return createErrorResponse(
+                ErrorCodes.MISSING_PARAMETER.name(),
+                "Required parameters are missing.",
+                details
+        );
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleConstraintViolation(ConstraintViolationException ex) {
-        String errorMessage = ex.getConstraintViolations().stream().map(violation -> violation.getPropertyPath() + ": " + violation.getMessage()).findFirst().orElse("Validation error occurred");
+        List<String> details = ex.getConstraintViolations().stream()
+                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
+                .toList();
 
-        return createErrorResponse(ErrorCodes.VALIDATION_ERROR.name(), errorMessage);
+        return createErrorResponse(ErrorCodes.VALIDATION_ERROR.name(), "Validation error occurred.", details);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleGenericException(Exception ex) {
         log.error("An unexpected error occurred", ex);
-        return createErrorResponse(ErrorCodes.INTERNAL_SERVER_ERROR.name(), "An unexpected error occurred");
+        return createErrorResponse(
+                ErrorCodes.INTERNAL_SERVER_ERROR.name(),
+                "An unexpected error occurred.",
+                List.of(ex.getMessage())
+        );
     }
 
     @ExceptionHandler(OpenFdaBadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleOpenFdaBadRequest(OpenFdaBadRequestException ex) {
-        return createErrorResponse(ErrorCodes.BAD_REQUEST.name(), ex.getMessage());
+        return createErrorResponse(ErrorCodes.BAD_REQUEST.name(), ex.getMessage(), List.of(ex.getMessage()));
     }
 
-    private ErrorResponse createErrorResponse(String code, String message) {
-        return new ErrorResponse().code(code).message(message);
+    private ErrorResponse createErrorResponse(String code, String message, List<String> details) {
+        return new ErrorResponse().code(code).message(message).details(details);
     }
 }

@@ -56,7 +56,7 @@ class DrugsFdaApiTest extends BaseApiTest {
                 .post()
                 .then()
                 .statusCode(400)
-                .body("message", Matchers.containsString(expectedMessage));
+                .body("details", Matchers.hasItem(expectedMessage));
     }
 
     @Test
@@ -112,7 +112,7 @@ class DrugsFdaApiTest extends BaseApiTest {
                 .get("/search")
                 .then()
                 .statusCode(400)
-                .body("message", Matchers.containsString(expectedMessage));
+                .body("details", Matchers.hasItem(expectedMessage));
     }
 
     private static Stream<Arguments> invalidSearchParams() {

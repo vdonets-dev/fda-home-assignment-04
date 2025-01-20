@@ -1,6 +1,6 @@
 package com.fda.home.config;
 
-import com.fda.home.cache.CacheNames;
+import com.fda.home.cache.CacheName;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
@@ -23,7 +23,7 @@ public class CacheConfig {
 
     @Bean
     public CaffeineCacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager(CacheNames.OPEN_FDA_CACHE.getName());
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager(CacheName.OPEN_FDA_CACHE.getName());
         cacheManager.setCaffeine(Caffeine.newBuilder()
                 .expireAfterWrite(expireAfterWriteSeconds, TimeUnit.SECONDS)
                 .maximumSize(maximumSize)

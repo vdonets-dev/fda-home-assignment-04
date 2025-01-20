@@ -2,212 +2,21 @@
   "meta": {
     "skip": 0,
     "limit": 10,
+    "total": 336,
+    "total_pages": 34
   },
   "drug_applications": [
     {
+      "application_number": "ANDA204490",
+      "sponsor_name": "HIKMA",
       "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
       ],
       "brand_names": [
+        "DOCETAXEL"
       ],
       "substance_names": [
-      ],
-      "product_numbers": [
-      ],
-      "products": [
-        {
-          "product_number": "001",
-          "dosage_form": "INJECTABLE",
-          "marketing_status": "Prescription",
-          "te_code": "AP",
-          "active_ingredients": []
-        }
-      ],
-      "submissions": [
-        {
-          "submission_status": "AP",
-    },
-    {
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "ORIG",
-          "submission_number": "1",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_number": "1",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-    },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "LABELING",
-          "submission_class_code_description": "Labeling"
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
-          "submission_class_code": "MANUF (CMC)",
-          "submission_class_code_description": "Manufacturing (CMC)"
-        }
-      ]
-    },
-    {
-      "manufacturer_names": [
-      ],
-      "brand_names": [
-      ],
-      "substance_names": [
+        "DOCETAXEL"
       ],
       "product_numbers": [
         "001",
@@ -216,12 +25,19 @@
       "products": [
         {
           "product_number": "001",
+          "brand_name": "DOCETAXEL",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
           "reference_standard": "No",
           "te_code": "AP",
           "active_ingredients": []
         },
         {
           "product_number": "002",
+          "brand_name": "DOCETAXEL",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
           "reference_drug": "No",
           "reference_standard": "No",
           "te_code": "AP",
@@ -233,13 +49,22 @@
           "submission_type": "ORIG",
           "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "20210114",
+          "submission_class_code": "UNKNOWN"
         }
       ]
     },
     {
+      "application_number": "ANDA208773",
+      "sponsor_name": "HIKMA",
       "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
       ],
       "brand_names": [
+        "POSACONAZOLE"
+      ],
+      "substance_names": [
+        "POSACONAZOLE"
       ],
       "product_numbers": [
         "001"
@@ -247,20 +72,385 @@
       "products": [
         {
           "product_number": "001",
+          "brand_name": "POSACONAZOLE",
+          "dosage_form": "SUSPENSION",
           "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AB",
           "active_ingredients": []
         }
       ],
       "submissions": [
         {
           "submission_type": "SUPPL",
+          "submission_number": "2",
           "submission_status": "AP",
+          "submission_status_date": "20241024",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "ORIG",
+          "submission_number": "1",
+          "submission_status": "AP",
+          "submission_status_date": "20200515",
+          "submission_class_code": "UNKNOWN"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "1",
+          "submission_status": "AP",
+          "submission_status_date": "20241024",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        }
+      ]
+    },
+    {
+      "application_number": "ANDA086066",
+      "sponsor_name": "HIKMA INTL PHARMS",
+      "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc.",
+        "BluePoint Laboratories"
+      ],
+      "brand_names": [
+        "ISOSORBIDE DINITRATE",
+        "ISOSORBIDE"
+      ],
+      "substance_names": [
+        "ISOSORBIDE DINITRATE"
+      ],
+      "product_numbers": [
+        "001"
+      ],
+      "products": [
+        {
+          "product_number": "001",
+          "brand_name": "ISOSORBIDE DINITRATE",
+          "dosage_form": "TABLET",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AB",
+          "active_ingredients": []
+        }
+      ],
+      "submissions": [
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "47",
+          "submission_status": "AP",
+          "submission_status_date": "20160104",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "39",
           "submission_status": "AP",
+          "submission_status_date": "20020705",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "37",
+          "submission_status": "AP",
+          "submission_status_date": "20000417",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "29",
+          "submission_status": "AP",
+          "submission_status_date": "19940412",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "35",
+          "submission_status": "AP",
+          "submission_status_date": "20010307",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "27",
+          "submission_status": "AP",
+          "submission_status_date": "19910513",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "19",
+          "submission_status": "AP",
+          "submission_status_date": "19870515",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "33",
+          "submission_status": "AP",
+          "submission_status_date": "19980226",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "25",
+          "submission_status": "AP",
+          "submission_status_date": "19930616",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "31",
+          "submission_status": "AP",
+          "submission_status_date": "19970303",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "23",
+          "submission_status": "AP",
+          "submission_status_date": "19930616",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "ORIG",
+          "submission_number": "1",
+          "submission_status": "AP",
+          "submission_status_date": "19871026"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "15",
+          "submission_status": "AP",
+          "submission_status_date": "19840511",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "21",
+          "submission_status": "AP",
+          "submission_status_date": "19881014",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "13",
+          "submission_status": "AP",
+          "submission_status_date": "19830228",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "46",
+          "submission_status": "AP",
+          "submission_status_date": "20160104",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "38",
+          "submission_status": "AP",
+          "submission_status_date": "20010411",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "36",
+          "submission_status": "AP",
+          "submission_status_date": "20010307",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "28",
+          "submission_status": "AP",
+          "submission_status_date": "19921204",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "34",
+          "submission_status": "AP",
+          "submission_status_date": "19981001",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "26",
+          "submission_status": "AP",
+          "submission_status_date": "19910213",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "18",
+          "submission_status": "AP",
+          "submission_status_date": "19870515",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "32",
+          "submission_status": "AP",
+          "submission_status_date": "19970922",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "24",
+          "submission_status": "AP",
+          "submission_status_date": "19930616",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "30",
+          "submission_status": "AP",
+          "submission_status_date": "19940412",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "22",
+          "submission_status": "AP",
+          "submission_status_date": "19930616",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "14",
+          "submission_status": "AP",
+          "submission_status_date": "19840810",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "12",
+          "submission_status": "AP",
+          "submission_status_date": "19821118",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        }
+      ]
+    },
+    {
+      "application_number": "ANDA203725",
+      "sponsor_name": "HIKMA",
+      "manufacturer_names": [
+        "Phlow Corp.",
+        "Hikma Pharmaceuticals USA Inc."
+      ],
+      "brand_names": [
+        "VECURONIUM BROMIDE"
+      ],
+      "substance_names": [
+        "VECURONIUM BROMIDE"
+      ],
+      "product_numbers": [
+        "001",
+        "002"
+      ],
+      "products": [
+        {
+          "product_number": "001",
+          "brand_name": "VECURONIUM BROMIDE",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AP",
+          "active_ingredients": []
+        },
+        {
+          "product_number": "002",
+          "brand_name": "VECURONIUM BROMIDE",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AP",
+          "active_ingredients": []
+        }
+      ],
+      "submissions": [
+        {
+          "submission_type": "ORIG",
+          "submission_number": "1",
+          "submission_status": "AP",
+          "submission_status_date": "20190730",
+          "submission_class_code": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "application_number": "ANDA203662",
+      "sponsor_name": "HIKMA",
+      "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
+      ],
+      "brand_names": [
+        "NOREPINEPHRINE BITARTRATE"
+      ],
+      "substance_names": [
+        "NOREPINEPHRINE BITARTRATE"
+      ],
+      "product_numbers": [
+        "001"
+      ],
+      "products": [
+        {
+          "product_number": "001",
+          "brand_name": "NOREPINEPHRINE BITARTRATE",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AP",
+          "active_ingredients": []
+        }
+      ],
+      "submissions": [
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "3",
+          "submission_status": "AP",
+          "submission_status_date": "20210226",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "4",
+          "submission_status": "AP",
+          "submission_status_date": "20210226",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
@@ -274,11 +464,17 @@
       ]
     },
     {
+      "application_number": "ANDA208339",
+      "sponsor_name": "HIKMA",
       "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc.",
+        "CivicaScript, LLC"
       ],
       "brand_names": [
+        "ABIRATERONE"
       ],
       "substance_names": [
+        "ABIRATERONE ACETATE"
       ],
       "product_numbers": [
         "001"
@@ -286,7 +482,10 @@
       "products": [
         {
           "product_number": "001",
+          "brand_name": "ABIRATERONE ACETATE",
+          "dosage_form": "TABLET",
           "marketing_status": "Prescription",
+          "reference_drug": "No",
           "reference_standard": "No",
           "te_code": "AB",
           "active_ingredients": []
@@ -297,18 +496,23 @@
           "submission_type": "SUPPL",
           "submission_number": "8",
           "submission_status": "AP",
+          "submission_status_date": "20240822",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "2",
           "submission_status": "AP",
+          "submission_status_date": "20210702",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "12",
           "submission_status": "AP",
+          "submission_status_date": "20241028",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
@@ -316,74 +520,175 @@
           "submission_type": "ORIG",
           "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "20181031",
+          "submission_class_code": "UNKNOWN"
+        }
+      ]
     },
     {
+      "application_number": "ANDA212286",
+      "sponsor_name": "HIKMA",
+      "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
+      ],
+      "brand_names": [
+        "DICYCLOMINE HYDROCHLORIDE"
+      ],
+      "substance_names": [
+        "DICYCLOMINE HYDROCHLORIDE"
+      ],
+      "product_numbers": [
+        "001"
+      ],
+      "products": [
+        {
+          "product_number": "001",
+          "brand_name": "DICYCLOMINE HYDROCHLORIDE",
+          "dosage_form": "SYRUP",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AA",
+          "active_ingredients": []
+        }
+      ],
+      "submissions": [
+        {
+          "submission_type": "ORIG",
+          "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "20200522",
+          "submission_class_code": "UNKNOWN"
+        }
+      ]
     },
     {
+      "application_number": "ANDA080575",
+      "sponsor_name": "WEST-WARD PHARMS INT",
+      "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
+      ],
+      "brand_names": [
+        "THIAMINE HYDROCHLORIDE"
+      ],
+      "substance_names": [
+        "THIAMINE HYDROCHLORIDE"
+      ],
+      "product_numbers": [
+        "001"
+      ],
+      "products": [
         {
+          "product_number": "001",
+          "brand_name": "THIAMINE HYDROCHLORIDE",
+          "dosage_form": "INJECTABLE",
+          "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AP",
+          "active_ingredients": []
+        }
+      ],
+      "submissions": [
         {
           "submission_type": "SUPPL",
+          "submission_number": "8",
           "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
+          "submission_status_date": "19830913",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "18",
           "submission_status": "AP",
+          "submission_status_date": "20001027",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "6",
           "submission_status": "AP",
+          "submission_status_date": "19820922",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "16",
           "submission_status": "AP",
+          "submission_status_date": "19960227",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "14",
+          "submission_status": "AP",
+          "submission_status_date": "19881219",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "10",
           "submission_status": "AP",
+          "submission_status_date": "19861103",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
+          "submission_type": "ORIG",
+          "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "19750624"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "19",
           "submission_status": "AP",
+          "submission_status_date": "20200928",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "17",
           "submission_status": "AP",
+          "submission_status_date": "19970908",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
           "submission_number": "15",
           "submission_status": "AP",
+          "submission_status_date": "19910423",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "11",
           "submission_status": "AP",
+          "submission_status_date": "19861103",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         }
       ]
     },
     {
+      "application_number": "ANDA062396",
+      "sponsor_name": "HIKMA INTL PHARMS",
       "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
       ],
       "brand_names": [
+        "DOXYCYCLINE HYCLATE"
       ],
       "substance_names": [
+        "DOXYCYCLINE HYCLATE"
       ],
       "product_numbers": [
         "002",
@@ -402,106 +707,149 @@
         },
         {
           "product_number": "001",
+          "brand_name": "DOXYCYCLINE HYCLATE",
+          "dosage_form": "CAPSULE",
           "marketing_status": "Prescription",
+          "reference_drug": "No",
+          "reference_standard": "No",
+          "te_code": "AB",
           "active_ingredients": []
         }
       ],
       "submissions": [
         {
           "submission_type": "SUPPL",
+          "submission_number": "57",
           "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "49",
           "submission_status": "AP",
+          "submission_status_date": "20150921",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "55",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "61",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "39",
           "submission_status": "AP",
+          "submission_status_date": "20080630",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "53",
           "submission_status": "AP",
+          "submission_status_date": "20150921",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "37",
           "submission_status": "AP",
+          "submission_status_date": "20060508",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "51",
           "submission_status": "AP",
+          "submission_status_date": "20150921",
+          "submission_class_code": "LABELING",
+          "submission_class_code_description": "Labeling"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "29",
+          "submission_status": "AP",
+          "submission_status_date": "20010227",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "35",
           "submission_status": "AP",
+          "submission_status_date": "20041004",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "27",
           "submission_status": "AP",
+          "submission_status_date": "20000911",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "19",
           "submission_status": "AP",
+          "submission_status_date": "19940214",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "33",
           "submission_status": "AP",
+          "submission_status_date": "20021209",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "25",
           "submission_status": "AP",
+          "submission_status_date": "19991108",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "17",
           "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
+          "submission_status_date": "19930608",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "31",
           "submission_status": "AP",
+          "submission_status_date": "20010622",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "23",
+          "submission_status": "AP",
+          "submission_status_date": "19981001",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
@@ -509,188 +857,264 @@
           "submission_type": "ORIG",
           "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "19841107"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "15",
           "submission_status": "AP",
+          "submission_status_date": "19891205",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "21",
           "submission_status": "AP",
+          "submission_status_date": "19950117",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "74",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "13",
           "submission_status": "AP",
+          "submission_status_date": "19890501",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "58",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "72",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "56",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "48",
           "submission_status": "AP",
+          "submission_status_date": "20150921",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "54",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "60",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "38",
           "submission_status": "AP",
+          "submission_status_date": "20070531",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "52",
           "submission_status": "AP",
+          "submission_status_date": "20150921",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "44",
           "submission_status": "AP",
+          "submission_status_date": "20111130",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "28",
           "submission_status": "AP",
+          "submission_status_date": "20000911",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "42",
           "submission_status": "AP",
+          "submission_status_date": "20101118",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "34",
           "submission_status": "AP",
+          "submission_status_date": "20031024",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "26",
           "submission_status": "AP",
+          "submission_status_date": "20001016",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "40",
           "submission_status": "AP",
+          "submission_status_date": "20100515",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "18",
           "submission_status": "AP",
+          "submission_status_date": "19930802",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "32",
           "submission_status": "AP",
+          "submission_status_date": "20020328",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "24",
           "submission_status": "AP",
+          "submission_status_date": "19991108",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "77",
           "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "16",
           "submission_status": "AP",
+          "submission_status_date": "19930312",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "30",
           "submission_status": "AP",
+          "submission_status_date": "20010125",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "22",
           "submission_status": "AP",
+          "submission_status_date": "19980511",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "14",
           "submission_status": "AP",
+          "submission_status_date": "19891205",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "67",
           "submission_status": "AP",
-        },
-        {
-          "submission_type": "SUPPL",
-          "submission_status": "AP",
+          "submission_status_date": "20181030",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "20",
           "submission_status": "AP",
+          "submission_status_date": "19940316",
+          "submission_class_code": "MANUF (CMC)",
+          "submission_class_code_description": "Manufacturing (CMC)"
+        },
+        {
+          "submission_type": "SUPPL",
+          "submission_number": "59",
+          "submission_status": "AP",
+          "submission_status_date": "20230726",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         }
       ]
     },
     {
+      "application_number": "ANDA076278",
+      "sponsor_name": "HIKMA",
       "manufacturer_names": [
+        "Hikma Pharmaceuticals USA Inc."
       ],
       "brand_names": [
+        "FLECAINIDE ACETATE"
       ],
       "substance_names": [
+        "FLECAINIDE ACETATE"
       ],
       "product_numbers": [
         "001",
+        "002",
+        "003"
       ],
       "products": [
         {
           "product_number": "001",
+          "brand_name": "FLECAINIDE ACETATE",
+          "dosage_form": "TABLET",
           "marketing_status": "Prescription",
           "reference_drug": "No",
           "reference_standard": "No",
@@ -699,6 +1123,8 @@
         },
         {
           "product_number": "002",
+          "brand_name": "FLECAINIDE ACETATE",
+          "dosage_form": "TABLET",
           "marketing_status": "Prescription",
           "reference_drug": "No",
           "reference_standard": "No",
@@ -707,8 +1133,12 @@
         },
         {
           "product_number": "003",
+          "brand_name": "FLECAINIDE ACETATE",
+          "dosage_form": "TABLET",
           "marketing_status": "Prescription",
+          "reference_drug": "No",
           "reference_standard": "Yes",
+          "te_code": "AB",
           "active_ingredients": []
         }
       ],
@@ -717,17 +1147,21 @@
           "submission_type": "ORIG",
           "submission_number": "1",
           "submission_status": "AP",
+          "submission_status_date": "20030114"
         },
         {
           "submission_type": "SUPPL",
           "submission_number": "5",
           "submission_status": "AP",
+          "submission_status_date": "20150217",
           "submission_class_code": "MANUF (CMC)",
           "submission_class_code_description": "Manufacturing (CMC)"
         },
         {
           "submission_type": "SUPPL",
+          "submission_number": "3",
           "submission_status": "AP",
+          "submission_status_date": "20071107",
           "submission_class_code": "LABELING",
           "submission_class_code_description": "Labeling"
         }

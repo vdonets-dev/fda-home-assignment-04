@@ -109,7 +109,6 @@ class DrugApplicationMapperTest extends BaseRepositoryTest {
                 .containsExactly("APP003", List.of(), List.of(), List.of());
     }
 
-    // Создание тестовых данных с использованием параметров
     private DrugApplicationRequest createTestRequest(String applicationNumber,
                                                      List<String> manufacturers,
                                                      List<String> substances,

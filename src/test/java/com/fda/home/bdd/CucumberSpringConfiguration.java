@@ -1,24 +1,25 @@
-package com.fda.home;
+package com.fda.home.bdd;
 
-import lombok.SneakyThrows;
-import org.junit.jupiter.api.BeforeEach;
+import com.fda.home.BaseTestContainer;
+import io.cucumber.java.Before;
+import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-@Testcontainers
-@SpringBootTest
-public abstract class BaseRepositoryTest extends BaseTestContainer {
+@CucumberContextConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWireMock(port = 0)
+public class CucumberSpringConfiguration extends BaseTestContainer {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @BeforeEach
-    @SneakyThrows
+    @Before
     @Transactional
-    void cleanDatabase() {
+    public void cleanDatabase() {
         try {
             jdbcTemplate.execute("TRUNCATE TABLE drug_application_product CASCADE");
             jdbcTemplate.execute("TRUNCATE TABLE drug_application_substance CASCADE");
@@ -28,5 +29,4 @@ public abstract class BaseRepositoryTest extends BaseTestContainer {
             throw new IllegalStateException("Failed to clean database before test execution", e);
         }
     }
-
 }

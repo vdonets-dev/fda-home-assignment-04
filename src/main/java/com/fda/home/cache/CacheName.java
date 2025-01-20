@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum CacheNames {
+public enum CacheName {
     OPEN_FDA_CACHE("openFdaCache");
 
     private final String name;

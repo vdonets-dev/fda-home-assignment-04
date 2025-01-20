@@ -1,6 +1,6 @@
 package com.fda.home.cache.impl;
 
-import com.fda.home.cache.CacheNames;
+import com.fda.home.cache.CacheName;
 import com.fda.home.cache.OpenFdaCacheService;
 import com.fda.home.model.dto.OpenFdaSearchResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,13 +19,13 @@ public class OpenFdaCacheServiceImpl implements OpenFdaCacheService {
 
     @Override
     public Optional<OpenFdaSearchResponse> getFromCache(String cacheKey) {
-        return Optional.ofNullable(cacheManager.getCache(CacheNames.OPEN_FDA_CACHE.getName()))
+        return Optional.ofNullable(cacheManager.getCache(CacheName.OPEN_FDA_CACHE.getName()))
                 .map(cache -> cache.get(cacheKey, OpenFdaSearchResponse.class));
     }
 
     @Override
     public void cacheResponse(String cacheKey, OpenFdaSearchResponse response) {
-        Optional.ofNullable(cacheManager.getCache(CacheNames.OPEN_FDA_CACHE.getName()))
+        Optional.ofNullable(cacheManager.getCache(CacheName.OPEN_FDA_CACHE.getName()))
                 .ifPresent(cache -> cache.put(cacheKey, response));
     }
 
